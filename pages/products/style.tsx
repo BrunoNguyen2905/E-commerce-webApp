@@ -1,5 +1,6 @@
 import {createStyles, makeStyles, Theme} from '@material-ui/core'
 
+// @ts-ignore
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       wrapper: {
@@ -32,6 +33,12 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             maxHeight: '768px',
             flexWrap: 'wrap'
+        },
+        content__about: {
+          display: 'flex',
+        },
+        content__item_about: {
+          margin: '12px'
         },
         content__item: {
             width: '100%',

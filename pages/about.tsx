@@ -1,27 +1,15 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
-import {gql, useQuery} from '@apollo/client'
 import useStyles from './products/style'
 import {Product} from "../interfaces";
-import client from "./apollo";
-import {Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
+import { Card, CardActionArea, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
 import React from "react";
 import Box from "@material-ui/core/Box";
 
-const ALL_PRODUCTS = gql`
-    query allProducts($skip: String!, $take: String!) {
-        allProducts(skip: $skip, take: $take) {
-            id
-            name
-        }
-    }
-`
 
 export interface  IProducts {
     products: Product[]
 }
 // @ts-ignore
-export default function AboutPage({loading, data}) {
+export default function AboutPage() {
     const classes = useStyles();
     const devs = [
         {
@@ -49,9 +37,9 @@ export default function AboutPage({loading, data}) {
             github: 'https://github.com/ptdatkhtn'
         }
     ]
-    return <Box className={classes.content__items}>
+    return <Box className={classes.content__about}>
         {
-            devs?.map((dev)=> (<Card className={classes.content__item}>
+            devs?.map((dev)=> (<Card className={classes.content__item_about}>
                 <CardActionArea>
                     <CardMedia className={classes.item__media}
                                image={dev.img}
@@ -77,18 +65,4 @@ export default function AboutPage({loading, data}) {
         }
     </Box>
 }
-
-// // @ts-ignore
-// export async function getServerSideProps(context) {
-//     // console.log('context--->', context.req)
-//     const { loading, data } = await client.query({
-//         query: ALL_PRODUCTS,
-//         variables: {
-//             skip: "0",
-//             take: "2"
-//         }
-//     })
-//     console.log('aaaaaaa--->', data)
-//     return {props: { loading, data }}
-// }
 
